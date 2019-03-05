@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.knsg.dao.UserMarkDao">
+
+    <select id="insertUserMark" parameterType="com.knsg.entity.UserMark">
+        INSERT INTO
+          user_mark ( parent_id, user_id, mark, creat_date )
+        VALUES
+	      ( #{parentId}, #{userId}, #{mark}, #{creatDate} )
+    </select>
+
+    <select id="selectOldMarkUser" resultType="com.knsg.entity.UserMark">
+        SELECT
+            parent_id postParentId,
+            user_id userId,
+            mark mark,
+            creat_date creatDate
+        FROM
+            user_mark
+        WHERE
+            parent_id = #{postId} AND (creat_date BETWEEN #{firstDate} and #{lastDate} )
+    </select>
+
+</mapper>

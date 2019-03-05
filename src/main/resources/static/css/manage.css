@@ -1,0 +1,81 @@
+/*最左边的功能框div*/
+.mag_left{
+    /*border: 1px solid red;*/
+    width: 20%;
+    /*height: 950px;*/
+    background-color: cornflowerblue;
+}
+.mag_left,.mag_right{
+    float: left;
+}
+.mag_right{
+    width: 80%;
+    /*height: 950px;*/
+}
+/*最上面的div*/
+.mag_top{
+    /*border: 1px solid red;*/
+    background-color: darkkhaki;
+    width: 100%;
+    height: 22%;
+}
+/*最右下的div*/
+#mag_down{
+    /*border: 1px solid red;*/
+    /*background-color: whitesmoke;*/
+    width: 100%;
+    height: 78%;
+}
+/*左边标题*/
+.left_title{
+    height: 20%;
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: whitesmoke;
+    background-color: darkkhaki;
+    padding-top: 15%;
+}
+/*最上面这栏的最右边的当前用户，职位，和注销*/
+.mag_user,.mag_post{
+    margin-left: 86%;
+    width: 13%;
+    height: 15%;
+    /*border: 1px solid whitesmoke;*/
+}
+.mag_post{
+    margin-top: 1%;
+}
+.mag_user div,.mag_post div{
+    float: left;
+}
+.mag_out{
+    margin-left: 94%;
+    width: 5%;
+    height: 10%;
+    /*border: 1px solid whitesmoke;*/
+    margin-top: 1%;
+}
+#out_bu{
+    color: whitesmoke;
+    background-color: blue;
+    width: 100%;
+    height: 100%;
+    border: 0px;
+}
+.mag_user_name,.mag_post_name{
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+.mag_pname,.mag_uname{
+    margin-left: 10%;
+    font-size: 18px;
+    color: black;
+}
+
+.mag_top_fei{
+    margin-left: 86%;
+    height: 42%;
+}

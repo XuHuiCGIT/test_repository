@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.knsg.dao.DemotionPostRelationshipDao">
+
+
+    <select id="selectDemotionUser" resultType="String" parameterType="java.lang.String">
+      SELECT
+        low_post_id lowPostId
+      FROM
+	    demotion_post_relationship
+      WHERE
+	    demotion_post_relationship.hight_post_id = #{heightPostId}
+    </select>
+
+</mapper>

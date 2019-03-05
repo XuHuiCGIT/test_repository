@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.knsg.dao.KnUserDao">
+    <!--<resultMap id="BaseResultMap" type="com.knsg.entity.KnUser">-->
+        <!--<id column="id" property="id" jdbcType="INTEGER"/>-->
+        <!--<result column="name" property="name" jdbcType="VARCHAR"/>-->
+        <!--<result column="age" property="age" jdbcType="VARCHAR"/>-->
+
+    <!--</resultMap>-->
+
+
+    <select id="selectHaveUser" resultType="com.knsg.entity.KnUser" parameterType="java.lang.String">
+    SELECT
+        user_id userId,
+        user_name userName,
+        user_post userPost,
+        post_name postName,
+        salt salt,
+        creat_date creatDate,
+        user_password userPassword
+    FROM
+        kn_user
+    WHERE
+        kn_user.user_name = #{userName}
+    </select>
+
+    <select id="selectEveryUserRelation" resultType="com.knsg.entity.KnUser" parameterType="java.lang.String">
+    SELECT
+	  user_id userId,
+	  user_name userName,
+	  user_post userPost,
+	  post_name postName
+    FROM
+        kn_user
+    WHERE
+        kn_user.user_post
+    IN ( SELECT
+        low_post_id
+    FROM
+        post_relationship
+    WHERE
+        hight_post_id = #{postId} )
+    </select>
+    <select id="updataUserPost" resultType="Integer">
+    UPDATE
+      kn_user
+    SET
+      kn_user.user_post = #{knPost.postId},
+      kn_user.post_name = #{knPost.postName}
+    WHERE
+        user_id = #{userId};
+    </select>
+
+    <select id="selectMarkUser" resultType="com.knsg.entity.KnUser" parameterType="java.lang.String">
+        SELECT
+            user_id userId,
+            user_name userName,
+            user_post userPost,
+            post_name postName
+        FROM
+            kn_user
+        WHERE
+            user_post IN ( SELECT post_id FROM post_relation_parent WHERE post_parent_id = #{postId} )
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.knsg.dao.PostRelationParentDao">
+
+
+    <select id="selectDownPost" resultType="com.knsg.entity.KnPost" parameterType="java.lang.String">
+      SELECT
+        post_id postId,
+        post_name postName
+      FROM
+        kn_post
+      WHERE
+        kn_post.post_id =
+      (SELECT
+        post_id
+      FROM
+        post_relation_parent
+      WHERE
+        post_relation_parent.post_parent_id = #{postId})
+    </select>
+
+    <select id="selectUpPost" resultType="com.knsg.entity.KnPost" parameterType="java.lang.String">
+      SELECT
+        post_id postId,
+        post_name postName
+      FROM
+        kn_post
+      WHERE
+        kn_post.post_id =
+      (SELECT
+        post_parent_id
+      FROM
+        post_relation_parent
+      WHERE
+        post_relation_parent.post_id = #{postId})
+    </select>
+
+</mapper>
